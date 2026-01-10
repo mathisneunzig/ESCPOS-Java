@@ -20,7 +20,7 @@ Add this library to your **Maven project**:
 
 ```xml
 <dependency>
-  <groupId>de.mathisneunzig</groupId>
+  <groupId>de.neunziglabs</groupId>
   <artifactId>escpos</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -35,11 +35,11 @@ Or manually download the **JAR file** and include it in your project.
 ### 🖨️ Printing a Receipt with Text, Barcodes, and QR Codes
 
 ```java
-package de.mathisneunzig.escpos.demo;
+package de.neunziglabs.escpos.demo;
 
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
-import de.mathisneunzig.escpos.*;
+import de.neunziglabs.escpos.*;
 
 public class POSDemo {
     public static void main(String[] args) {
@@ -101,7 +101,7 @@ If you want to **prevent actual printing** in your tests, disable it using `POSC
 ```java
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import de.mathisneunzig.escpos.POSConfig;
+import de.neunziglabs.escpos.POSConfig;
 
 public class SomeControllerTest {
 
@@ -132,7 +132,7 @@ For unit tests where you need to **verify printed output** without a real printe
 ```java
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import de.mathisneunzig.escpos.*;
+import de.neunziglabs.escpos.*;
 
 public class POSPrinterMockTest {
 
