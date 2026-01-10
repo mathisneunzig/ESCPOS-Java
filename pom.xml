@@ -1,90 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>de.mathisneunzig</groupId>
-	<artifactId>escpos</artifactId>
-	<version>1.0.0</version>
-	<name>ESCPOS</name>
-	<description>Library for ESC/POS printers</description>
-  	<url>https://github.com/DrBackmischung/ESCPOS-Java</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  	<licenses>
-    	<license>
-      	<name>MIT License</name>
-      	<url>https://opensource.org/licenses/MIT</url>
-    	</license>
-  	</licenses>
+  <modelVersion>4.0.0</modelVersion>
 
-  	<scm>
-    	<url>https://github.com/DrBackmischung/ESCPOS-Java</url>
-    	<connection>scm:git:git://github.com/DrBackmischung/ESCPOS-Java.git</connection>
-    	<developerConnection>scm:git:ssh://git@github.com/DrBackmischung/ESCPOS-Java.git</developerConnection>
-  	</scm>
+  <groupId>de.neunziglabs</groupId>
+  <artifactId>escpos</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
 
-  	<developers>
-    	<developer>
-      		<id>DrBackmischung</id>
-      		<name>DrBackmischung</name>
-      		<url>https://github.com/DrBackmischung</url>
-    	</developer>
-  	</developers>
+  <name>escpos</name>
+  <description>Library for ESC/POS printers</description>
+  <url>https://github.com/mathisneunzig/ESCPOS-Java</url>
 
-  	<distributionManagement>
-    	<repository>
-      		<id>github</id>
-      		<url>https://maven.pkg.github.com/DrBackmischung/ESCPOS-Java</url>
-    	</repository>
-  	</distributionManagement>
-  	
-	<properties>
-		<java.version>17</java.version>
-	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-	        <groupId>org.junit.jupiter</groupId>
-	        <artifactId>junit-jupiter-api</artifactId>
-	        <scope>test</scope>
-	    </dependency>
-	    
-	    <dependency>
-	        <groupId>org.junit.jupiter</groupId>
-	        <artifactId>junit-jupiter-engine</artifactId>
-	        <scope>test</scope>
-	    </dependency>
-	    
-	    <dependency>
-	        <groupId>org.mockito</groupId>
-	        <artifactId>mockito-core</artifactId>
-	        <scope>test</scope>
-	    </dependency>
-	</dependencies>
+  <developers>
+    <developer>
+      <id>mathisneunzig</id>
+      <name>Mathis Neunzig</name>
+      <email>info@mathis-neunzig.de</email>
+      <url>https://www.mathis-neunzig.de</url>
+    </developer>
+  </developers>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+  <scm>
+    <url>https://github.com/mathisneunzig/ESCPOS-Java</url>
+    <connection>scm:git:https://github.com/mathisneunzig/ESCPOS-Java.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/mathisneunzig/ESCPOS-Java.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.10.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>5.11.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.3.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.6.3</version>
+        <configuration>
+          <doclint>none</doclint>
+        </configuration>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>3.2.7</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.10.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
