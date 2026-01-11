@@ -10,7 +10,7 @@ public class POSReceipt extends POSDocument {
             receipt.addComponent(new POSText.Builder(title)
                 .setStyle(POSPrintStyle.BOLD, POSPrintStyle.DOUBLE_HEIGHT)
                 .setAlignment(POSTextAlignment.CENTER)
-                .build());
+                .build(), 0);
             return this;
         }
 

@@ -27,8 +27,6 @@ public class POSDemo {
 
         // Create the receipt
         POSReceipt receipt = new POSReceipt.Builder()
-                // Title
-                .setTitle("ESC/POS PRINTER DEMO")
 
                 // Add Line Feeds for Spacing
                 .addFeed()
@@ -48,6 +46,9 @@ public class POSDemo {
                 // Add Spacing
                 .addItem("Product 1", 1)
                 .addItem("Product 2", 2.5)
+                
+                // Title
+                .setTitle("ESC/POS PRINTER DEMO")
                 
                 .addFeed()
 

@@ -9,6 +9,10 @@ public class POSDocument extends POSComponent {
     public void addComponent(POSComponent component) {
         components.add(component);
     }
+
+    public void addComponent(POSComponent component, int index) {
+        components.add(index, component);
+    }
     
     public void addLineFeed(int count) {
         components.add(new POSLineFeed(count));
