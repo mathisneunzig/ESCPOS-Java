@@ -3,6 +3,9 @@ package de.neunziglabs.escpos.demo;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 
+import de.neunziglabs.escpos.POSAddress;
+import de.neunziglabs.escpos.POSAddressBuildStrategies;
+import de.neunziglabs.escpos.POSAddressType;
 import de.neunziglabs.escpos.POSBarcode;
 import de.neunziglabs.escpos.POSBarcodeType;
 import de.neunziglabs.escpos.POSBarcodeWidth;
@@ -17,7 +20,31 @@ import de.neunziglabs.escpos.POSTextAlignment;
 
 public class POSDemo {
     public static void main(String[] args) {
-        // Locate the printer
+    	testAddress();
+    }
+    
+    public static void testAddress() {
+        PrintService printerService = findPrintService("Printer");
+
+        if (printerService == null) {
+            System.out.println("Printer not found");
+            return;
+        }
+        
+        POSAddress address = new POSAddress.Builder()
+        		.setBuildStrategy(POSAddressBuildStrategies.forType(POSAddressType.JAPAN))
+        		.setRecipientName("Mathis Neunzig")
+        		.setStreet("Europaplatz")
+        		.setHouseNumber("17")
+        		.setCity("Heidelberg")
+        		.setPostalCode("69115")
+        		.build();
+
+        POSPrinter printer = new POSPrinter(printerService);
+        printer.print(address);
+    }
+    
+    public static void testReceipt() {
         PrintService printerService = findPrintService("Printer");
 
         if (printerService == null) {
@@ -27,6 +54,9 @@ public class POSDemo {
 
         // Create the receipt
         POSReceipt receipt = new POSReceipt.Builder()
+                
+                // Title
+                .setTitle("ESC/POS PRINTER DEMO")
 
                 // Add Line Feeds for Spacing
                 .addFeed()
@@ -46,9 +76,6 @@ public class POSDemo {
                 // Add Spacing
                 .addItem("Product 1", 1)
                 .addItem("Product 2", 2.5)
-                
-                // Title
-                .setTitle("ESC/POS PRINTER DEMO")
                 
                 .addFeed()
 
